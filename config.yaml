@@ -1,0 +1,51 @@
+seed: 42
+output_dir: outputs/bio_meniscusnet_pp
+
+data:
+  csv_path: data/metadata.csv
+  image_size: 224
+  num_workers: 4
+  pin_memory: true
+  train_folds: [0, 1, 2, 3]
+  val_fold: 4
+  views:
+    coronal_col: coronal_path
+    sagittal_col: sagittal_path
+  clinical:
+    continuous_cols: [age, bmi, energy_score]
+    categorical_cols: [sex, discoid]
+  label_col: grade
+  patient_id_col: patient_id
+  surgery_col: surgery
+
+training:
+  epochs: 80
+  batch_size: 16
+  grad_accum_steps: 2
+  amp: true
+  clip_grad_norm: 1.0
+  early_stopping_patience: 12
+
+optimizer:
+  lr: 0.0005
+  weight_decay: 0.0001
+
+scheduler:
+  t0: 10
+  t_mult: 2
+  eta_min: 0.000001
+
+model:
+  num_classes: 4
+  backbone_name: tf_efficientnetv2_s.in21k_ft_in1k
+  pretrained: true
+  feature_dim: 512
+  clinical_hidden: 128
+  dropout: 0.2
+  num_heads: 8
+
+loss:
+  class_weights: [1.0, 1.2, 1.5, 2.2]
+  lambda_ord: 0.35
+  lambda_surgery: 0.25
+  lambda_consistency: 0.10

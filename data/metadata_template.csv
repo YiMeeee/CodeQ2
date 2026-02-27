@@ -1,0 +1,3 @@
+patient_id,coronal_path,sagittal_path,age,bmi,energy_score,sex,discoid,grade,surgery,fold
+P0001,data/images/P0001_coronal.png,data/images/P0001_sagittal.png,45,24.7,1,M,0,2,1,0
+P0002,data/images/P0002_coronal.png,data/images/P0002_sagittal.png,61,28.1,0,F,1,1,0,1
