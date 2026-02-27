@@ -1,4 +1,4 @@
-# Bio-MeniscusNet++ (可直接训练版)
+# Bio-MeniscusNet++
 
 这是一个可直接运行的完整多模态训练框架，基于论文思路实现，并进一步升级为 **Bio-MeniscusNet++**：
 
